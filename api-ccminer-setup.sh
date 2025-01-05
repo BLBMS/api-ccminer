@@ -15,6 +15,7 @@ sudo apt install python3-pip -y
 sudo pip3 install requests -y
 sudo apt install nano screen bc jq -y
 
+sdir=$(dirname "$(readlink -f "$0")")
 cd ~
 
 base_name="api-ccminer"
@@ -58,4 +59,4 @@ echo "alias wan='~/api-ccminer/no_act.sh'" >> ~/.bashrc
 echo "alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'" >> ~/.bashrc
 echo "alias sl='screen -ls'" >> ~/.bashrc
 
-rm -f ~/api-ccminer-setup.sh
+rm -f $sdir/api-ccminer-setup.sh
