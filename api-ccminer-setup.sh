@@ -57,3 +57,5 @@ echo "alias was='~/api-ccminer/wsummary.sh'" >> ~/.bashrc
 echo "alias wan='~/api-ccminer/no_act.sh'" >> ~/.bashrc
 echo "alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'" >> ~/.bashrc
 echo "alias sl='screen -ls'" >> ~/.bashrc
+
+rm -f ~/api-ccminer-setup.sh
