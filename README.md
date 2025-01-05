@@ -55,25 +55,48 @@ ______________
 
 edit file `dev.list` containing the IPs of the miners (xxx.xxx.xxx.xxx) and the name of that miner separated by one tab or space, one per line, than you cam add descriptin add a blank line at the end of the file
 
-e.g.:
 ```
-
+###   ### - line ignored
+###   #   - set to NOT_LISTED
+### worker_IP   worker_name   custom_text
+192.168.100.110  Miner
+127.1.0.111  Worker
+#127.1.0.112  badWorker  in_servis
+192.168.102.1     A30a  no screen
+192.168.102.7     A30g
+###192.168.102.8     A30h  waiting for repair
+192.168.102.51     A41a
+192.168.102.52     A41b
 ```
 ______________
-## watch.sh
+## mydata.json
 
-change refreshing time (depending on the number of devices)
-
-______________
-## watch-screen.sh
-
-change pool names (as you have set in config.json) and colors
-
-______________
-## check-all
-
-change to your port
-
+change to your needs
+```
+{
+  "home_dir": "/home/user/api-ccminer",                      - change automatically
+  "port": 4068,                                              - change if different
+  "time_zone": "Europe/Berlin",                              - change if different > ls /usr/share/zoneinfo
+  "device_list": "dev.list",
+  "refreshing_min": 10,                                      - refresh time in minutes (must be greater than the elapsed time, see above the workers output)
+  "not_on_list": 1,                                          - if it is 1, it does not display workers marked with #
+  "pool_1": "verus.io",                                      - change (exactly) names as you have them in config.json
+  "pool_2": "vipor",
+  "pool_3": "luckpool",
+  "pool_4": "zerg",
+  "pool_5": "farm",
+  "pool_6": "MRR"
+}
+```
 ______________
 ## set up aliases
-```bash
+
+added during setup automatically
+```
+alias wa='~/api-ccminer/watch.sh'                       # start
+alias rw='screen -x Watch'                              # show screen
+alias was='~/api-ccminer/wsummary.sh'                   # show only summary
+alias wan='~/api-ccminer/no_act.sh'                     # show only not active devices
+alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'     # stop screens
+alias sl='screen -ls'                                   # list screens
+```
