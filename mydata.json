@@ -3,7 +3,7 @@
   "port": 4068,
   "time_zone": "Europe/Berlin",
   "device_list": "dev.list",
-  "refreshing_min": 1,
+  "refreshing_min": 10,
   "not_on_list": 1,
   "pool_1": "verus.io",
   "pool_2": "vipor",
