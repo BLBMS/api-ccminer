@@ -48,6 +48,7 @@ sudo apt install nano screen bc jq -y
 
 No support provided; use at your own risk.
 If you don't know what you're doing, don't proceed.
+Report bug on Discord.
 
 ## Configuration
 
@@ -67,10 +68,9 @@ Edit the dev.list file to include the IPs and names of miners. Each line should 
 
 Lines starting with ### are ignored.
 Lines starting with ### # are marked as NOT_ON_LIST.
-Example:
 
+Example:
 ```shell
-Kopiraj kodo
 ###   ### - line ignored
 ###   #   - set to NOT_ON_LIST
 ### worker_IP   worker_name   custom_text
