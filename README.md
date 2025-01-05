@@ -17,16 +17,20 @@ Total hashrate of all miners
 Number of active and inactive miners, as well as unreachable devices from .list (OFF)
 Estimated revenue in VRSC and USDT
 Output time and number of output iterations (for performance monitoring)
+
 Additionally:
 Colors different mining pools for easier identification
 Highlights hashrates below 1 MH/s or above specific thresholds (e.g., >2, >3 ... >9 MH/s)
-Oink's Android Mining Monitoring Tool
+
+## Oink's Android Mining Monitoring Tool
+
+https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
 Read Oink's README.md first!
-
 Thanks, Oink! 😄
 
-This tool is tailored to my needs, with each miner's performance displayed in MH/s (mega hashes per second). Customization requires some prior programming knowledge.
+This tool is tailored to my needs, with each miner's performance displayed in MH/s (mega hashes per second).
+Customization requires some prior programming knowledge.
 
 ## Requirements
 During the installation process, the following dependencies will be installed automatically:
@@ -44,29 +48,31 @@ sudo apt install nano screen bc jq -y
 
 No support provided; use at your own risk.
 If you don't know what you're doing, don't proceed.
-Configuration
-config.json
-json
-Kopiraj kodo
-"api-allow": "0.0.0.0/0",
+
+## Configuration
+
+### config.json
+Add at the end in your config.json
 Allows access for this IP range. Adjust according to your network setup.
-
-json
-Kopiraj kodo
+```json
+"api-allow": "0.0.0.0/0",
+```
+Enables the API, binding it to the specified IP address and port. 0.0.0.0 indicates all adapters and IPs. Change to your port.
+```json
 "api-bind": "0.0.0.0:4068",
-Enables the API, binding it to the specified IP address and port. 0.0.0.0 indicates all adapters and IPs.
+```
 
-dev.list
+### dev.list
 Edit the dev.list file to include the IPs and names of miners. Each line should include the miner's IP address and name, separated by a tab or space. You can optionally add a description. End the file with a blank line.
 
 Lines starting with ### are ignored.
-Lines starting with ### # are marked as NOT_LISTED.
+Lines starting with ### # are marked as NOT_ON_LIST.
 Example:
 
-shell
+```shell
 Kopiraj kodo
 ###   ### - line ignored
-###   #   - set to NOT_LISTED
+###   #   - set to NOT_ON_LIST
 ### worker_IP   worker_name   custom_text
 192.168.100.110  Miner
 127.1.0.111  Worker
@@ -76,11 +82,13 @@ Kopiraj kodo
 ###192.168.102.8     A30h  waiting_for_repair
 192.168.102.51     A41a
 192.168.102.52     A41b
-mydata.json
+
+```
+
+### mydata.json
 Customize this file to suit your setup:
 
-json
-Kopiraj kodo
+```json
 {
   "home_dir": "/home/user/api-ccminer",                      // Automatically set
   "port": 4068,                                              // Change if different
@@ -95,18 +103,19 @@ Kopiraj kodo
   "pool_5": "farm",
   "pool_6": "MRR"
 }
-Aliases
+```
+
+### Aliases
 The following aliases will be added during setup:
 
-bash
-Kopiraj kodo
+```bash
 alias wa='~/api-ccminer/watch.sh'                       # Start monitoring
 alias rw='screen -x Watch'                              # Attach to the screen
 alias was='~/api-ccminer/wsummary.sh'                   # Show only the summary
 alias wan='~/api-ccminer/no_act.sh'                     # Show only inactive devices
 alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'     # Stop the screen
 alias sl='screen -ls'                                   # List all screens
-
+```
 
 
 
