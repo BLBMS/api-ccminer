@@ -40,7 +40,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install python3 -y
 sudo apt install python3-pip -y
-sudo pip3 install requests
+pip3 install requests
 sudo apt install nano screen bc jq -y
 ```
 
