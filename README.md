@@ -27,7 +27,7 @@ tailored to my needs, each miner is in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
-you definitely need this - automatic install in setup procdure:
+you definitely need this - automatic installation in the installation process:
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
