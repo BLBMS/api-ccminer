@@ -1,5 +1,7 @@
 #!/usr/bin/perl
-# sample script to query ccminer API
+# v.2025-01-05
+# by blbMS
+
 use strict;
 use warnings;
 use Getopt::Long qw(GetOptions);
