@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install python3 -y
 sudo apt install python3-pip -y
-sudo pip3 install requests -y
+sudo pip3 install requests
 sudo apt install nano screen bc jq -y
 
 sdir=$(dirname "$(readlink -f "$0")")
@@ -46,12 +46,14 @@ echo "xw='screen -S Watch -X quit 1>/dev/null 2>&1'      stop screens"
 echo "sl='screen -ls'                                    list screens"
 
 alias wa='~/api-ccminer/watch.sh'                       # start
-alias rw='screen -x Watch'                              # show screen
+alias rw='screen -x Watch'                 e             # show screen
 alias was='~/api-ccminer/wsummary.sh'                   # show only summary
 alias wan='~/api-ccminer/no_act.sh'                     # show only not active devices
 alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'     # stop screens
 alias sl='screen -ls'                                   # list screens
 
+echo "" >> ~/.bashrc
+echo "#     alias api-ccminer" >> ~/.bashrc
 echo "alias wa='~/api-ccminer/watch.sh'" >> ~/.bashrc
 echo "alias rw='screen -x Watch'" >> ~/.bashrc
 echo "alias was='~/api-ccminer/wsummary.sh'" >> ~/.bashrc
