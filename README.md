@@ -3,4 +3,6 @@ adds summary for all miners - based on Oinks-API monitoring
 
 for install > copy
 
-'cd ~;F="";cd ~/;rm -f $FAJL.sh;wget https://raw.githubusercontent.com/BLBMS/am-t/moje/0/$FAJL.sh;chmod +x $FAJL.sh; # ./$FAJL.sh
+'F="api-ccminer-setup.sh";cd ~/;rm -f $F;wget https://raw.githubusercontent.com/BLBMS/api-ccminer/main/$F;chmod +x $F; ./$F'
+
+
