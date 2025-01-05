@@ -1,0 +1,14 @@
+{
+  "home_dir": "/home/user/api-ccminer",
+  "port": 4068,
+  "time_zone": "Europe/Berlin",
+  "device_list": "dev.list",
+  "refreshing_min": 1,
+  "not_on_list": 1,
+  "pool_1": "verus.io",
+  "pool_2": "vipor",
+  "pool_3": "luckpool",
+  "pool_4": "zerg",
+  "pool_5": "farm",
+  "pool_6": "MRR"
+}
