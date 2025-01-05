@@ -1,6 +1,7 @@
 #!/bin/bash
 # v.2025-01-05
 # by blbMS
+
 Gray='\x1B[0;30m'
 Red='\x1B[0;31m'
 Green='\x1B[0;32m'
