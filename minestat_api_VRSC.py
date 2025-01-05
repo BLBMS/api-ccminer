@@ -1,6 +1,7 @@
 # python
 # v.2025-01-05
 # by blbMS
+
 import requests
 
 url = "https://api.minerstat.com/v2/coins"
