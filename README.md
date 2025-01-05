@@ -53,7 +53,10 @@ No support provided. Report bug on Discord.
 ## Donation
 If you find this program useful and appreciate my effort, you can support me by donating for a coffee or, even better, for a beer. 🍺 Cheers!
 Your generosity is greatly appreciated.
-```RLcGoh1Ztr2kttU9hkJXUH9SzsUXGT8twZ```
+VRSC
+```
+RLcGoh1Ztr2kttU9hkJXUH9SzsUXGT8twZ
+```
 
 ## Configuration
 
@@ -95,13 +98,13 @@ Customize this file to suit your setup:
 
 ```json
 {
-  "home_dir": "/home/user/api-ccminer",                      // Automatically set
-  "port": 4068,                                              // Change if different
-  "time_zone": "Europe/Berlin",                              // Change if needed (see /usr/share/zoneinfo for options)
+  "home_dir": "/home/user/api-ccminer",               // Automatically set
+  "port": 4068,                                       // Change if different
+  "time_zone": "Europe/Berlin",                       // Change if needed (see /usr/share/zoneinfo for options)
   "device_list": "dev.list",
-  "refreshing_min": 10,                                      // Refresh interval in minutes (must be > elapsed time for worker output)
-  "not_on_list": 1,                                          // Set to 1 to hide workers marked with #
-  "pool_1": "verus.io",                                      // Match names exactly as in config.json
+  "refreshing_min": 10,                               // Refresh interval in minutes (must be > elapsed time for worker output)
+  "not_on_list": 1,                                   // Set to 1 to hide workers marked with #
+  "pool_1": "verus.io",                               // Match names exactly as in config.json
   "pool_2": "vipor",
   "pool_3": "luckpool",
   "pool_4": "zerg",
