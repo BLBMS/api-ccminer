@@ -53,6 +53,7 @@ No support provided. Report bug on Discord.
 ## Donation
 If you find this program useful and appreciate my effort, you can support me by donating for a coffee or, even better, for a beer. 🍺 Cheers!
 Your generosity is greatly appreciated.
+
 VRSC
 ```
 RLcGoh1Ztr2kttU9hkJXUH9SzsUXGT8twZ
