@@ -56,7 +56,7 @@ Your generosity is greatly appreciated.
 
 VRSC
 ```
-RLcGoh1Ztr2kttU9hkJXUH9SzsUXGT8twZ
+zs1u32sumn5pfn9va68wk6cmw60jmlsl5elt2vdrrxa0qvcgeatvvq5zp96ewyrczwg2q3e78ycctp
 ```
 
 ## Configuration
