@@ -126,10 +126,10 @@ alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'     # Stop the screen
 alias sl='screen -ls'                                   # List all screens
 ```
 
-## Foto
-
+## Screenshot for reference
+"not_on_list": 0, 
 ![API CCminer Screenshot](api-ccminer_0.png)
 
-
+"not_on_list": 1, 
 ![API CCminer Screenshot](api-ccminer_1.png)
 
