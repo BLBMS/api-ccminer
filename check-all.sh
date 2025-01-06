@@ -32,6 +32,10 @@ while read line; do
                 ip=$(echo "$line" | awk '{print $1}')
                 name=$(echo "$line" | awk '{print $2}')
                 echo -e "${ip} ${name}" >> "$dev_on_list"
+                length=$(echo -n "$name" | wc -c)
+                if (( length > max_length )); then
+                    max_length=$length
+                fi
             fi
         else
             on=$((on+1))
