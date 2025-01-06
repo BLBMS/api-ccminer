@@ -13,7 +13,7 @@ echo -e "\e[93m$header\e[0m"
 device_names=$(tail -n +2 "$input_file" | awk '{print $2}' | sed 's/_*$//')
 N=10
 count=0
-colors=("\e[94m" "\e[92m" "\e[96m" "\e[95m" "\e[91m")
+colors=("\e[94m" "\e[92m" "\e[96m" "\e[1;93m" "\e[91m")
 for name in $device_names; do
   color=${colors[$((count % ${#colors[@]}))]}
   echo -ne "$color$name\e[0m "
