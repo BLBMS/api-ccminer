@@ -125,3 +125,11 @@ alias wan='~/api-ccminer/no_act.sh'                     # Show only inactive dev
 alias xw='screen -S Watch -X quit 1>/dev/null 2>&1'     # Stop the screen
 alias sl='screen -ls'                                   # List all screens
 ```
+
+## Foto
+
+![API CCminer Screenshot](api-ccminer_0.png)
+
+
+![API CCminer Screenshot](api-ccminer_1.png)
+
