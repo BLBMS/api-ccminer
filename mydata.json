@@ -2,7 +2,6 @@
   "device_list": "dev.list",
   "port": 4068,
   "refreshing_min": 15,
-  "repair": 0,
   "webjson": 1,
   "not_on_list": 0,
   "columns": 0,
