@@ -1,13 +1,14 @@
 #!/bin/bash
-# v.2025-04-17.006
+# v.2025-04-17.007
 # by blbMS
-version="v.037"
+version="v.038"
 # BEGIN --------------------------------------------------------------------------------------------------------
 clear
 tput clear
 home_dir=$(dirname "$(readlink -f "$0")")
 mydata_json="$home_dir/mydata.json"
 refreshing_min=$(jq -r '.refreshing_min' $mydata_json)
+set_colors=$(jq -r '.colors' $mydata_json)
 SSH_rsa=$(jq -r '.SSH_rsa' "$mydata_json" | sed "s|^~|$HOME|")
 eval "$(ssh-agent -s)" > /dev/null 2>&1
 ssh-add "$SSH_rsa" > /dev/null 2>&1
@@ -29,8 +30,14 @@ cd "$home_dir"
 > "$noact_list"
 source "$home_dir/functions.sh"
 colors
+clear
+sleep 1
 echo -e "api-ccminer        refreshing every $refreshing_min min        by blbMS 2025    $version\n"
-echo -ne "\e[3;1H\e[K${Yellow}Start time: $start_time_display            ${White}preparing data ..."
+if [ "$set_colors" = "1" ]; then
+    echo -ne "\e[3;1H\e[K${Yellow}Start time: $start_time_display            ${White}preparing data ..."
+else
+    echo -ne "\e[3;1H\e[KStart time: $start_time_display            preparing data ..."
+fi
 # ponavlja neskončno ----------------------------------------------------------------------------------------------
 while true; do
     web_dir=$(jq -r '.web_dir' "$mydata_json" | sed "s|^~|$HOME|")
@@ -112,7 +119,6 @@ while true; do
     PColor13=$(jq -r '.pcolor_13' $mydata_json)
     PColor14=$(jq -r '.pcolor_14' $mydata_json)
     PColor15=$(jq -r '.pcolor_15' $mydata_json)
-    time_zone=$(jq -r '.time_zone' $mydata_json)
     set_columns=$(jq -r '.columns' $mydata_json)
     set_colors=$(jq -r '.colors' $mydata_json)
     set_dev_line=$(jq -r '.dev_in_line' $mydata_json)
