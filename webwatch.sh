@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-16.003
+# v.2025-04-17.001
 # by blbMS
 
 home_dir=$(dirname "$(readlink -f "$0")")
@@ -27,7 +27,7 @@ while read -r line; do
 done < "$home_dir/$device_list"
 echo "0" > "$iteration_txt"
 screen -wipe 1>/dev/null 2>&1
-if screen -ls | grep -i Watch; then
+if screen -ls | grep -i WebWatch; then
   printf "\n\e[93m WebWatch is already running! 'rw' to see \e[0m\n"
   sleep 2
   screen -r WebWatch
@@ -37,8 +37,5 @@ else
   screen -wipe 1>/dev/null 2>&1
   screen -dmS WebWatch 1>/dev/null 2>&1
   screen -S WebWatch -X stuff "tput clear && sleep 0.5 && $start_api_ccminer\n" 1>/dev/null 2>&1
-fi
-if screen -ls | grep -q "\bWebWatch\b"; then
-    printf "\n\e[93m screen WebWatch is running\e[0m\n"
 fi
 printf "\n\e[93m open with: 'screen -r WebWatch' or 'rw' \n close with 'xw' \e[0m\n"
