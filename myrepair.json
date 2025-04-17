@@ -1,0 +1,6 @@
+{
+  "SSH_user": "your_name",
+  "SSH_ID": "~/.ssh/id_your",
+  "SSH_port": 8022,
+  "SSH_script": "screen -S CCminer -X quit;sleep 0.5;screen -dmS CCminer bash -c './ccminer -c config.json'"
+}
