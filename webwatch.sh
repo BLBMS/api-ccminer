@@ -40,6 +40,6 @@ else
 fi
 printf "\n\e[93m open with: 'screen -r WebWatch' or 'rw' \n start with 'sw' \n close with 'xw' \e[0m\n"
 # move aliases to .bashrc
-alias sw='~/api-ccweb/webwatch.sh'
+alias sw='~/api-ccminer/webwatch.sh'
 alias rw='screen -d -r WebWatch'
 alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
