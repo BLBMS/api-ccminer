@@ -1,4 +1,4 @@
-###   ### - line ignored
+###   ### - comment/line ignored
 ###   #   - set to NOT_ON_LIST
 ### worker_IP   worker_name   custom_text
 192.168.100.110  Miner
