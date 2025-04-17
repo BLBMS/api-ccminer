@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-17.008
+# v.2025-04-17.009
 # by blbMS
 # -------------------------------------------------------------------------
 colors() {
@@ -96,7 +96,16 @@ read_api() {
             fi
         fi
     done < "$device_list"
-    echo -ne "\e[3;1H\e[K${Yellow}Start time: $start_time_display  "
+    if [ "$set_colors" = "1" ]; then
+        echo -ne "\e[3;1H\e[K${Yellow}Start time: $start_time_display  "
+    else
+        echo -ne "\e[3;1H\e[KStart time: $start_time_display  "
+    fi
+    if [ "$not_on_list" = "1" ]; then
+        all_dev=$all
+    else
+        all_dev=$on
+    fi
     BUILD="["
     all=0
     act=0
@@ -109,7 +118,11 @@ read_api() {
         length=$(echo -n "$device_org" | wc -c)
         spaces=$(( max_length - length ))
         device=$(printf "%s%*s" "$device_org" $spaces "" | tr ' ' '_')
-        echo -ne "\e[3;28H\e[K${White}Device: ${Red}($all/$on) ${Blue}$ip ${Green}$device_org\e[0m"
+        if [ "$set_colors" = "1" ]; then
+            echo -ne "\e[3;28H\e[K${White}Device: ${Red}($all/$all_dev) ${Blue}$ip ${Green}$device_org\e[0m"
+        else
+            echo -ne "\e[3;28H\e[KDevice: ($all/$all_dev) $ip $device_org"
+        fi
         if [[ $line =~ ^# ]]; then
             ip="${ip#\#}"
             iip=$(echo "$ip" | awk -F. '{printf "%03d.%03d.%03d.%03d", $1, $2, $3, $4}')
@@ -161,7 +174,7 @@ read_api() {
     done < "$dev_on_list"
     BUILD="${BUILD::-1}"
     JSON=$BUILD"]"
-        echo -e "$JSON" > "$home_dir/check-all.tmp"
+    echo -e "$JSON" > "$home_dir/check-all.tmp"
     jq . "$home_dir/check-all.tmp" > "$device_json"
     rm "$home_dir/dev_no_act.list"
     mv "$home_dir/dev_no_act.tmp" "$home_dir/dev_no_act.list"
@@ -218,25 +231,35 @@ summary() {
     echo -e "${Green}active devices  : $act"
     echo -e "${Red}inactive devices: $inact"
     echo -e "${iRed}turned off      : $off"
-    echo -e "${Yellow}time of data    : $cur_time${C_Off}"
+    echo -e "${Magenta}iterations      : $iteration${C_Off}"
     echo
     tput cuu 6
     tput cuf 30
-    echo -n -e "${iMagenta}all hash  : $mhsall MHs\n"
+    echo -n -e "${iMagenta}all hash    : $mhsall MHs\n"
     tput cuf 30
-    echo -n -e "${Blue}VRSC/day  : $my_reward2\n"
+    echo -n -e "${Blue}VRSC/day    : $my_reward2\n"
     tput cuf 30
-    echo -n -e "${iBlue}USDT/day  : $my_reward_USDT2\n"
+    echo -n -e "${iBlue}USDT/day    : $my_reward_USDT2\n"
     tput cuf 30
-    echo -n -e "${Magenta}iterations: $iteration\n\n"
+    echo -n -e "${Yellow}time of data: $cur_time\n\n"
 }
 # -------------------------------------------------------------------------
 summaryBW() {
-    echo -e "all devices     : $all \e[215C\e[Kall hash  : $mhsall MHs"
-    echo -e "active devices  : $act \e[215C\e[KVRSC/day  : $my_reward2"
-    echo -e "inactive devices: $inact \e[215C\e[KUSDT/day  : $my_reward_USDT2"
-    echo -e "turned off      : $off \e[215C\e[Kiterations: $iteration"
-    echo -e "time of data    : $cur_time"
+    echo -e "all devices     : $all"
+    echo -e "active devices  : $act"
+    echo -e "inactive devices: $inact"
+    echo -e "turned off      : $off"
+    echo -e "iterations      : $iteration"
+    echo
+    tput cuu 6
+    tput cuf 30
+    echo -n -e "all hash    : $mhsall MHs\n"
+    tput cuf 30
+    echo -n -e "VRSC/day    : $my_reward2\n"
+    tput cuf 30
+    echo -n -e "USDT/day    : $my_reward_USDT2\n"
+    tput cuf 30
+    echo -n -e "time of data: $cur_time\n\n"
 }
 # -------------------------------------------------------------------------
 sorted_devices() {
