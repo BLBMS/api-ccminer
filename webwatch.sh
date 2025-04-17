@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-17.001
+# v.2025-04-17.002
 # by blbMS
 
 home_dir=$(dirname "$(readlink -f "$0")")
@@ -38,4 +38,8 @@ else
   screen -dmS WebWatch 1>/dev/null 2>&1
   screen -S WebWatch -X stuff "tput clear && sleep 0.5 && $start_api_ccminer\n" 1>/dev/null 2>&1
 fi
-printf "\n\e[93m open with: 'screen -r WebWatch' or 'rw' \n close with 'xw' \e[0m\n"
+printf "\n\e[93m open with: 'screen -r WebWatch' or 'rw' \n start with 'sw' \n close with 'xw' \e[0m\n"
+# move aliases to .bashrc
+alias sw='~/api-ccweb/webwatch.sh'
+alias rw='screen -d -r WebWatch'
+alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
