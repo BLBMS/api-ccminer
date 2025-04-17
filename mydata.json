@@ -1,4 +1,6 @@
 {
+  "SSH_rsa": "~/.ssh/your_rsa_id",
+  "web_dir": "~/api-web/",
   "device_list": "dev.list",
   "port": 4068,
   "refreshing_min": 15,
