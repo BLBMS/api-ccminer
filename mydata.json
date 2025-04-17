@@ -42,7 +42,6 @@
   "color_name": "Yellow",
   "color_ip": "Blue",
   "ip_prefix": "192.168.",
-  "ip_prefix1": "",
   "print_apis": 1,
   "print_summary": 1,
   "print_devices": 1
