@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>api-ccminer</title>
+	<link rel="stylesheet" href="style.css"> <!-- Povezava do CSS datoteke -->
+    <style>
+        body { font-family: monospace; background-color: black; color: white; }
+        h2 { color: darkcyan; } /* Naslov */
+        h3 { color: darkgoldenrod; } /* Datum in ura */
+
+		/* Splošne barve */
+		:root {
+		    --background-color: #111;			/* Preddefiniraj barvo ozadja */
+			--text-header-color: gray;			/* Preddefiniraj barvo pisave */
+		}
+        .red { color: red; }
+        .black { color: black; }
+        .blue { color: cyan; }
+        .gray { color: gray; }
+		.goldenrod { color: goldenrod; }
+
+		/* Pool barve */
+        .pool-off-line { color: red; }
+        .pool-not-on-list { color: firebrick; }
+        .pool-verus { color: deepskyblue; }
+        .pool-farm { color: royalblue; }
+        .pool-vipor { color: powderblue; }
+        .pool-luckpool { color: teal; }
+        .pool-aihole { color: rebeccapurple; }
+        .pool-zeus { color: orchid; }
+        .pool-zerg { color: aquamarine; }
+        .pool-dmz { color: darkmagenta; }
+        .pool-paddy { color: springgreen; }
+        .pool-cedric { color: skyblue; }
+        .pool-cisco { color: cyan; }
+        .pool-watt { color: blueviolet; }
+        .pool-fast { color: darkorange; }
+        .pool-rg3d { color: lawngreen; }
+
+		/* ***** to je tabela z napravami ***** */
+        .container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .table-container {
+             flex: 1;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid gray;
+            padding: 5px;
+			text-align: center;
+            white-space: nowrap;
+        }
+        th {
+            background-color: var(--background-color);
+            color: var(--text-header-color);
+            height: 20px;
+        }
+
+		/* ***** to je tabela z IMENI vseh pools ***** */
+        .pools-container {
+            display: flex;
+			flex-direction: column;
+            width: 100%;
+            margin: 10px auto;
+		    table-layout: fixed;
+        }
+        .pools-table {
+            width: 100%;
+            border: 1px solid gray;
+            text-align: center;
+        }
+        .pools-data {
+            padding: 5px;
+            white-space: pre-wrap;
+        }
+		td {
+			word-wrap: break-word;
+		    white-space: normal;
+			text-align: center;
+		}
+
+		/* ***** to je tabela s SUMMARY ***** */
+        .summ-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex: 1;
+            max-width: 660px;
+            margin: 10px auto;
+        }
+        .summ-table {
+            flex: 1; /* Vsaka tabelica zasede enako prostora */
+            /* min-width: 50%;  Da sta približno polovici */
+            /* box-sizing: border-box;  Da padding ne vpliva na širino */
+            /* border: 1px solid gray; */
+            padding: 0px;
+            text-align: center;
+        }
+		.summ-table th, .summ-table td {
+		    width: 50%; /* Enaka širina stolpcev */
+		}
+
+		/* ***** to je tabela s SORT napravami ***** */
+        .sort-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 10px auto;
+        }
+        .sort-table {
+            width: 100%;
+            border: 1px solid gray;
+        }
+        .sort-header { 
+            background-color: var(--background-color);
+            padding: 5px;
+			text-align: left;
+        }
+        .sort-data {
+            padding: 5px;
+            white-space: pre-wrap;
+			text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>api-ccminer-web   by blbMS v.019</h2>
+    <h3 id="date-container"></h3>
+    <div class="container" id="tables-container"></div>
+	<div class="pools-container" id="all-pools-in-container"></div>
+	<div class="summ-container" id="summ-container"></div>
+    <div class="sort-container" id="sort-container"></div>
+
+    <script>
+        async function loadData() {
+            const url = "data.json";
+            const response = await fetch(url);
+            const data = await response.json();
+
+            document.getElementById("date-container").innerText = data.DATE[0];
+
+            createDeviceTable(data.DATA);
+            createSummTable(data.SUMM);
+            createSortTable(data.SORT);
+        }
+
+<!--	PREBERE ŠTEVILO ZNAKOV-->
+		function getMaxColumnWidths(devices) {
+		    let maxPhone = 0, maxHost = 0, maxPool = 0;
+
+		    devices.forEach(item => {
+		        maxPhone = Math.max(maxPhone, item.PHONE.length);
+		        maxHost = Math.max(maxHost, item.HOST.length);
+		        maxPool = Math.max(maxPool, item.POOL.length);
+		    });
+
+		    // Dodamo nekaj dodatnih znakov za okvir tabele in presledke
+		    return {
+		        phone: maxPhone + 0, 
+		        host: maxHost + 0,
+		        pool: maxPool + 0,
+		        mhs: 5 + 0 // Vedno 5 znakov
+		    };
+		}
+
+<!--	DOLOČI ŠTEVILO STOLPCEV-->
+		function calculateColumns(devices) {
+		    const screenWidth = window.innerWidth;
+		    const colWidths = getMaxColumnWidths(devices);
+
+		    // Skupna širina ene tabele (PHONE + HOST + POOL + MHS + obrobe)
+		    const tableWidth = colWidths.phone + colWidths.host + colWidths.pool + colWidths.mhs;
+
+		    // Število tabel na zaslon
+		    return Math.max(1, Math.floor(screenWidth / (tableWidth * 10))); // Faktor 10 zaradi enot širine
+		}
+
+<!--	TABELA DEVICES-->
+		function createDeviceTable(devices) {
+		    const numDevices = devices.length;
+		    if (numDevices === 0) {
+		        alert("No data available.");
+		        return;
+		    }
+
+		    const columns = calculateColumns(devices);
+		    const rowsPerColumn = Math.ceil(numDevices / columns);
+		    let tablesContainer = document.getElementById("tables-container");
+		    tablesContainer.innerHTML = "";
+
+		    let columnsData = Array.from({ length: columns }, () => []);
+
+		    devices.forEach((item, index) => {
+		        let columnIndex = Math.floor(index / rowsPerColumn);
+		        columnsData[columnIndex].push(item);
+		    });
+
+		    columnsData.forEach(columnData => {
+		        let tableHTML = `<div class="table-container"><table><thead>
+		            <tr><th>DEVICE</th>  <th>IP</th>  <th>POOL</th>  <th>MHS</th></tr></thead><tbody>`;
+
+		        columnData.forEach(item => {
+		            let phoneColorClass = "goldenrod";
+		            let hostColorClass = "gray";
+		            let poolColorClass = getPoolColorClass(item.POOL);
+		            let mhs = parseFloat(item.MHS);
+		            let mhsColorClass = "";
+
+		            if (item.MHS.includes("0.000")) {
+		                mhsColorClass = "black";
+		            } else if (mhs < 3) {
+		                mhsColorClass = "red";
+		            } else if (mhs >= 5) {
+		                mhsColorClass = "blue";
+		            }
+
+		            tableHTML += `
+		                <tr>
+		                    <td class="${phoneColorClass}">${item.PHONE.padEnd(15, " ")}</td>
+		                    <td class="${hostColorClass}">${item.HOST.padEnd(15, " ")}</td>
+		                    <td class="${poolColorClass}">${item.POOL.padEnd(15, " ")}</td>
+		                    <td class="${mhsColorClass}">${item.MHS.padEnd(5, " ")}</td>
+		                </tr>`;
+		        });
+
+		        tableHTML += `</tbody></table></div>`;
+		        tablesContainer.innerHTML += tableHTML;
+		    });
+		}
+
+<!--	IZPIS VSEH POOL'S-->
+		const allPools = [
+		    { name: "OFF-LINE" },
+		    { name: "NOT-ON-LIST" },
+		    { name: "verus" },
+		    { name: "farm" },
+		    { name: "vipor" },
+		    { name: "luckpool" },
+		    { name: "aihole" },
+		    { name: "zeus" },
+		    { name: "zerg" },
+		    { name: "dmz" },
+		    { name: "paddy" },
+		    { name: "cedric" },
+		    { name: "cisco" },
+		    { name: "watt" },
+		    { name: "fast" },
+		    { name: "rg3d" }
+		];
+
+
+		function createAllPoolsTable(pools) {
+		    let allPoolsContainer = document.getElementById("all-pools-in-container");
+
+		    let colorPools = pools
+		        .map(pool => {
+		            let poolClass = getPoolColorClass(pool.name);
+		            return `<span class="${poolClass}">${pool.name}</span>`;
+		        })
+		        .join(" | ");
+
+		    let tableHTML = `
+		        <div class="pools-container">
+		            <table class="pools-table">
+		                <tr><td>${colorPools}</td></tr>
+		            </table>
+		        </div>
+		    `;
+
+		    allPoolsContainer.innerHTML = tableHTML;
+		}
+
+		// Klic funkcije
+		createAllPoolsTable(allPools);
+
+
+
+<!--		const allPools = [-->
+<!--		        { name: "off-line", class: "pool-off-line" },-->
+<!--		        { name: "not-on-list", class: "pool-not-on-list" },-->
+<!--		        { name: "verus", class: "pool-verus" },-->
+<!--		        { name: "farm", class: "pool-farm" },-->
+<!--		        { name: "vipor", class: "pool-vipor" },-->
+<!--		        { name: "luckpool", class: "pool-luckpool" },-->
+<!--		        { name: "aihole", class: "pool-aihole" },-->
+<!--		        { name: "zeus", class: "pool-zeus" },-->
+<!--		        { name: "zerg", class: "pool-zerg" },-->
+<!--		        { name: "dmz", class: "pool-dmz" },-->
+<!--		        { name: "paddy", class: "pool-paddy" },-->
+<!--		        { name: "cedric", class: "pool-cedric" },-->
+<!--		        { name: "cisco", class: "pool-cisco" },-->
+<!--		        { name: "watt", class: "pool-watt" },-->
+<!--		        { name: "fast", class: "pool-fast" },-->
+<!--		        { name: "rg3d", class: "pool-rg3d" }-->
+<!--		    ];-->
+<!---->
+<!--	    function createAllPoolsTable(pools) {-->
+<!--	        let allPoolsContainer = document.getElementById("all-pools-in-container");-->
+<!---->
+<!--	        // Pretvorimo seznam v HTML z ustreznimi CSS razredi-->
+<!--	        let colorPools = pools-->
+<!--	            .map(pool => `<span class="${pool.class}">${pool.name}</span>`)-->
+<!--	            .join(" | "); // Ločimo z dvema presledkoma-->
+<!---->
+<!--	        let tableHTML = `-->
+<!--	            <div class="pools-container">-->
+<!--	                <table class="pools-table">-->
+<!--	                    <tr><td>${colorPools}</td></tr>-->
+<!--	                </table>-->
+<!--	            </div>-->
+<!--	        `;-->
+<!---->
+<!--	        allPoolsContainer.innerHTML = tableHTML;-->
+<!--	    }-->
+<!---->
+<!--	    // Klic funkcije-->
+<!--	    createAllPoolsTable(allPools);-->
+<!---->
+
+
+
+<!--	TABELA SUMMARY-->
+        function createSummTable(summData) {
+            let summContainer = document.getElementById("summ-container");
+            summContainer.innerHTML = "";
+
+            if (!summData || summData.length === 0) return;
+
+            let summ = summData[0];
+
+            let tableHTML = `
+                <div class="summ-table">
+                    <table>
+                        <tr><th>Total</th><td>${summ.all_dev}</td></tr>
+                        <tr><th>Active</th><td>${summ.dev_active}</td></tr>
+                        <tr><th>Inactive</th><td>${summ.dev_inactive}</td></tr>
+                        <tr><th>Offline</th><td>${summ.dev_off}</td></tr>
+                    </table>
+				</div>
+                <div class="summ-table">
+                    <table>
+                        <tr><th>MH/s</th><td>${summ.mhs_all}</td></tr>
+                        <tr><th>VRSC/day</th><td>${summ.vrsc_day}</td></tr>
+                        <tr><th>USDT/day</th><td>${summ.usdt_day}</td></tr>
+                        <tr><th>Time</th><td>${summ.summ_time}</td></tr>
+                        <tr><th>Iteration</th><td>${summ.iteration}</td></tr>
+                    </table>
+                </div>`;
+
+            summContainer.innerHTML = tableHTML;
+        }
+
+<!--	TABELA SORT DEVICES-->
+		function createSortTable(sortData) {
+		    let sortContainer = document.getElementById("sort-container");
+		    sortContainer.innerHTML = "";
+
+		    if (!sortData || sortData.length === 0) return;
+
+		    sortData.forEach(group => {
+		        let category = Object.keys(group)[0]; // Pridobi kategorijo (ime poola)
+		        let devices = group[category]["devices"].join("  "); // Združi naprave z dvema presledkoma
+				let nrDevs = group[category]["nr-devs"]; // Pridobi število naprav
+
+		        let poolColorClass = getPoolColorClass(category); // Pridobi CSS razred
+
+		        console.log(`Category: ${category}, Class: ${poolColorClass}`); // Debugging output
+
+		        let tableHTML = `
+		            <div class="sort-container">
+		                <table class="sort-table">
+		                    <tr><th class="sort-header ${poolColorClass}">${category} (${nrDevs})</th></tr>
+		                    <tr><td class="sort-data">${devices}</td></tr>
+		                </table>
+		            </div>`;
+
+		        sortContainer.innerHTML += tableHTML;
+		    });
+		}
+
+<!--	DOLOČITEV BARV ZA VSAK POOL-->
+		function getPoolColorClass(pool) {
+		    if (!pool) return "";
+		    pool = pool.toLowerCase().trim();
+
+			if (pool.includes("off-line")) return "pool-off-line";
+			if (pool.includes("not-on-list")) return "pool-not-on-list";
+			if (pool.includes("farm")) return "pool-farm";
+			if (pool.includes("verus")) return "pool-verus";
+			if (pool.includes("luckpool")) return "pool-luckpool";
+			if (pool.includes("vipor")) return "pool-vipor";
+			if (pool.includes("aihole")) return "pool-aihole";
+			if (pool.includes("zeus")) return "pool-zeus";
+			if (pool.includes("zerg")) return "pool-zerg";
+			if (pool.includes("dmz")) return "pool-dmz";
+			if (pool.includes("paddy")) return "pool-paddy";
+			if (pool.includes("cedric")) return "pool-cedric";
+			if (pool.includes("cisco")) return "pool-cisco";
+			if (pool.includes("watt")) return "pool-watt";
+			if (pool.includes("fast")) return "pool-fast";
+			if (pool.includes("rg3d")) return "pool-rg3d";
+		    
+		    return ""; // Če ni najdena nobena ustrezna vrednost, vrni prazen razred
+		}
+
+        loadData();
+        setInterval(loadData, 60 * 1000); 
+    </script>
+
+</body>
+</html>
