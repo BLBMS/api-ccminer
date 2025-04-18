@@ -67,9 +67,8 @@ Clone repository (replace XXXXXX with the correct name of your repo)
 cd
 git clone https://github.com/XXXXXX/api-ccweb.git
 cd api-ccweb
-mv ~/api-ccminer/index.html .
-mv ~/api-ccminer/favicon.ico .
 ```
+
 
 Set up git
 `git remote -v`
@@ -77,10 +76,24 @@ If it prints  ... https://github.com/...
 change with
 `git remote set-url origin git@github.com/XXXXX/api-ccweb.git`
 replace XXXXX with your github name and check again
-`git remote -v`
+```
+git remote -v
+```
 Must be ... origin  git@github.com/...
+```
+git status
+git pull
+git push
+```
+
 
 Test with `git status`
+
+If all OK then
+```
+mv ~/api-ccminer/index.html .
+mv ~/api-ccminer/favicon.ico .
+```
 
 Add aliases in `nano ~/.bashrc`, add at end of file
 ```
