@@ -71,10 +71,9 @@ while true; do
     jq '. + {SUMM: [input]}' "$data_json" "$summary_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     jq -c --argfile sort "$sort_json" '. + $sort' "$data_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     if [ "$webjson" = "1" ]; then
-        cp "$data_json" "$web_json"
+        jq -c '.' "$data_json" > "${web_json}"
         web-json > /dev/null 2>&1
     fi
-    jq --argfile sort "$data_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     end_time=$(date +%s%3N)
     total_time=$((end_time - start_time))
     total_seconds=$((total_time / 1000))
