@@ -103,6 +103,12 @@ alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
 ```
 Update `source ~/.bashrc`
 
+## Configure your config.json
+Add at the end in your config.json. Allows access for this IP range. Adjust according to your network setup. Enables the API, binding it to the specified IP address and port. 0.0.0.0 indicates all adapters and IPs. Change to your port.
+```json
+"api-allow": "0.0.0.0/0",
+"api-bind": "0.0.0.0:4068",
+```
 ## Setting parameters
 Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 ```json
