@@ -87,7 +87,7 @@ mv ~/api-ccminer/index.html .
 mv ~/api-ccminer/favicon.ico .
 git add index.html
 git add favicon.ico
-git commit -m "first time"
+git commit -m "do not change or delete"
 git push origin main
 ```
 Check if you have this two files in your github/api-ccweb!
