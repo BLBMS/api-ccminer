@@ -3,7 +3,7 @@
 The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation. Colors different mining pools for easier identification. Highlights hashrates below 1 MH/s or above specific thresholds (e.g., >2, >3 ... >9 MH/s)
 The web page adapts to the width of the screen, so on mobile devices there is only one column, while on desktop the number of columns adjusts according to the current zoom of the page. The colors are fixed (current version) and are visible in the table under the devices.
 
-The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. Please note that refreshing the data on the GitHub page can take up to a few minutes, and there is nothing I can do about it. There will still be new data every 15 minutes, but the data will be a few minutes old.
+The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. Please note that refreshing the data on the GitHub page can take up to a few minutes, and there is nothing I can do about it. There will still be new data every 15 minutes, but the data will be a few minutes old. Sending data too frequently (say every 2 minutes) leads to an even greater delay in the display.
 
 ## Oink's Android Mining Monitoring Tool
 
