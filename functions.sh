@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-17.009
+# v.2025-04-17.011
 # by blbMS
 # -------------------------------------------------------------------------
 colors() {
@@ -342,7 +342,7 @@ sorted_devices() {
 }
 # -------------------------------------------------------------------------
 print_sorted_devices() {
-    for ((i=1; i<=max_pools; i++)); do
+    for ((i=$print_devices; i<=max_pools; i++)); do
         input_file="$home_dir/pool.$i"
         header=$(head -n 1 "$input_file")
         device_count=$(( $(tail -n +2 "$input_file" | wc -l) - 1 ))
