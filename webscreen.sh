@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-18.001
+# v.2025-04-18.002
 # by blbMS
 version="v.038"
 # BEGIN --------------------------------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ while true; do
         fi
     fi
     # IZPIS Summary devices ------------------------------------------------------------------------------
-    if [ "$print_devices" = "1" ]; then
+    if [ "$print_devices" > "0" ]; then
         if [ "$set_colors" = "1" ]; then
             echo
             echo -e "${iWhite}Sorted devices  \e[0m"
