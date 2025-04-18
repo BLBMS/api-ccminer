@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-18.002
+# v.2025-04-18.003
 # by blbMS
 version="v.038"
 clear
