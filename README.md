@@ -104,7 +104,7 @@ Update `source ~/.bashrc`
 
 ## Setting parameters
 Go to `cd ~/api-ccminer` and edit `nano mydata.json`
-```text
+```json
 "SSH_rsa": "~/.ssh/id_xxx", | Enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required.
 
 "web_dir": "~/api-ccweb/", | Change here if you choose different site, starting with `~/` is required.
