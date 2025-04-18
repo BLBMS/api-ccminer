@@ -90,7 +90,7 @@ git add favicon.ico
 git commit -m "first time"
 git push origin main
 ```
-Check if you have this two fules in your github/api-ccweb!
+Check if you have this two files in your github/api-ccweb!
 
 Add aliases in `nano ~/.bashrc`, add at end of file
 ```
