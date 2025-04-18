@@ -135,15 +135,15 @@ Lines starting with ### are comment/ignored. Lines starting with # are marked as
 
 Example:
 ```shell
-###   ### - line ignored
+###   ### - comment/line ignored
 ###   #   - set to NOT_ON_LIST
 ### worker_IP   worker_name   custom_text
 192.168.100.110  Miner
 127.1.0.111  Worker
-#127.1.0.112  badWorker  in_service
-192.168.102.1     A30a  no_screen
+#127.1.0.112  badWorker  in_servis
+192.168.102.1     A30a  no screen
 192.168.102.7     A30g
-###192.168.102.8     A30h  waiting_for_repair
+###192.168.102.8     A30h  waiting for repair
 192.168.102.51     A41a
 192.168.102.52     A41b
 
