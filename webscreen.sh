@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-17.007
+# v.2025-04-18.001
 # by blbMS
 version="v.038"
 # BEGIN --------------------------------------------------------------------------------------------------------
@@ -8,6 +8,7 @@ tput clear
 home_dir=$(dirname "$(readlink -f "$0")")
 mydata_json="$home_dir/mydata.json"
 refreshing_min=$(jq -r '.refreshing_min' $mydata_json)
+web_dir=$(jq -r '.web_dir' "$mydata_json" | sed "s|^~|$HOME|")
 set_colors=$(jq -r '.colors' $mydata_json)
 SSH_rsa=$(jq -r '.SSH_rsa' "$mydata_json" | sed "s|^~|$HOME|")
 eval "$(ssh-agent -s)" > /dev/null 2>&1
@@ -21,7 +22,7 @@ noact_list="$home_dir/dev_no_act.list"
 noact_tmp="$home_dir/dev_no_act.tmp"
 data_json="$home_dir/data.json"
 sort_json="$home_dir/sort.json"
-WEB_JSON="$HOME/web-json/data.json"
+web_json="$web_dir/data.json"
 iteration_txt="$HOME/iteration.txt"
 cd "$home_dir"
 > "$device_json"
@@ -76,7 +77,7 @@ while true; do
     jq --argfile sort "$sort_json" '. + $sort' "$data_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     # pošiljam na WEB stran
     if [ "$webjson" = "1" ]; then
-        cp "$data_json" "$WEB_JSON"
+        cp "$data_json" "$web_json"
         web-json > /dev/null 2>&1
     fi
     end_time=$(date +%s%3N)
