@@ -175,5 +175,14 @@ Example:
 
 ## Printout example
 ### Desktop - screen
-
-![1](/pic/esktop_screen.jpg)
+![1](/pic/desktop_screen.jpg)
+```json
+  "print_apis": 0,
+  "print_summary": 1,
+  "print_devices": 2
+```
+![2](/pic/desktop_screen_2.jpg)
+### Desktop - WEB
+![3](/pic/desktop_web.jpg)
+### Mobile - WEB
+![4](/pic/mobile_web.jpg)
