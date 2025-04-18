@@ -128,7 +128,26 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 "color_ip": "Blue", This is the color of the IP in the device table
 
-## 
+## Add devices to list
+Edit the dev.list file to include the IPs and names of miners. Each line should include the miner's IP address and name, separated by a tab or space. You can optionally add a description. End the file with a blank line.
+
+Lines starting with ### are comment/ignored. Lines starting with # are marked as NOT_ON_LIST. This temporarily removes the device from processing without permanently erasing it.
+
+Example:
+```shell
+###   ### - line ignored
+###   #   - set to NOT_ON_LIST
+### worker_IP   worker_name   custom_text
+192.168.100.110  Miner
+127.1.0.111  Worker
+#127.1.0.112  badWorker  in_service
+192.168.102.1     A30a  no_screen
+192.168.102.7     A30g
+###192.168.102.8     A30h  waiting_for_repair
+192.168.102.51     A41a
+192.168.102.52     A41b
+
+``` 
 
 ## Start
 `~/api-ccminer/webwatch.sh` or `sw`
