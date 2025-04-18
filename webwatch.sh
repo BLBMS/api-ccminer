@@ -1,5 +1,5 @@
 #!/bin/bash
-# v.2025-04-17.002
+# v.2025-04-18.002
 # by blbMS
 
 home_dir=$(dirname "$(readlink -f "$0")")
