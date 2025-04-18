@@ -147,7 +147,7 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 2* I recommend choosing shorter names due to the width of the output in tables.
 
-Important: Changing colors and displaying tables is only possible in the screen version. The web version cannot be customized (yet).
+Important: Changing colors and displaying tables is only possible in the screen version. The web version cannot be customized (yet). Adjusting the font size and number of columns in api-ccweb is done with the mouse wheel and F5 to refresh.
 
 ## Add devices to list
 Edit the dev.list file to include the IPs and names of miners. Each line should include the miner's IP address and name, separated by a tab or space. You can optionally add a description. End the file with a blank line.
