@@ -2,7 +2,6 @@
 # v.2025-04-18.002
 # by blbMS
 version="v.038"
-# BEGIN --------------------------------------------------------------------------------------------------------
 clear
 tput clear
 home_dir=$(dirname "$(readlink -f "$0")")
@@ -39,7 +38,6 @@ if [ "$set_colors" = "1" ]; then
 else
     echo -ne "\e[3;1H\e[KStart time: $start_time_display            preparing data ..."
 fi
-# ponavlja neskončno ----------------------------------------------------------------------------------------------
 while true; do
     web_dir=$(jq -r '.web_dir' "$mydata_json" | sed "s|^~|$HOME|")
     refreshing_min=$(jq -r '.refreshing_min' $mydata_json)
@@ -53,9 +51,7 @@ while true; do
     start_time=$(date +%s%3N)
     start_time_display=$(date -d "@$((start_time / 1000))" +'%H:%M:%S')
     > "$device_json"
-    # preverja API
     read_api
-    # uredi izpis in summary
     rm -f "$device_last"
     if [ -f "$device_json" ]; then
         if [ -s "$device_json" ]; then
@@ -64,10 +60,9 @@ while true; do
     fi
     making_summary
     sorted_devices
-    # sestavljam JSON
     > "$data_json"
     cp "$device_json" "$data_json"
-    sed -i 's/_//g' "$data_json" # briše vse _ globalno - kjerkoli
+    sed -i 's/_//g' "$data_json"
     if [[ -n "$ip_prefix" ]]; then
         sed -i "s/${ip_prefix}//g" "$data_json"
     fi
@@ -75,7 +70,6 @@ while true; do
     jq --arg date "$curr_date_time" '{ DATE: [$date], DATA: . }' "$data_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     jq '. + {SUMM: [input]}' "$data_json" "$summary_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
     jq --argfile sort "$sort_json" '. + $sort' "$data_json" > "${data_json}.tmp" && mv "${data_json}.tmp" "$data_json"
-    # pošiljam na WEB stran
     if [ "$webjson" = "1" ]; then
         cp "$data_json" "$web_json"
         web-json > /dev/null 2>&1
@@ -89,7 +83,6 @@ while true; do
     seconds=$((total_seconds % 60))
     elapsed_time=$(printf "%02d:%02d:%02d.%03d" $hours $minutes $seconds $milliseconds)
     end_time_display=$(date -d "@$((end_time / 1000))" +'%H:%M:%S')
-    # podatki za izpis iz json
     POOL1=$(jq -r '.pool_1' $mydata_json)
     POOL2=$(jq -r '.pool_2' $mydata_json)
     POOL3=$(jq -r '.pool_3' $mydata_json)
@@ -157,9 +150,7 @@ while true; do
     PColor13=${!PColor13}
     PColor14=${!PColor14}
     PColor15=${!PColor15}
-    # IZPIS API's vseh naprav ------------------------------------------------------------------------------
     if [ "$set_colors" = "1" ]; then
-        # with colors
         clear
         tput clear
         echo -e "api-ccminer        refreshing every $refreshing_min min        by blbMS 2025    $version\n"
@@ -217,7 +208,6 @@ while true; do
                 }'
         fi
     else
-        # no colors
         clear
         tput clear
         echo -e "api-ccminer        refreshing every $refreshing_min min        by blbMS 2025    $version\n"
@@ -243,20 +233,17 @@ while true; do
             echo
         fi
     fi
-    # IZPIS Summary ------------------------------------------------------------------------------
     if [ "$print_summary" = "1" ]; then
         if [ "$set_colors" = "1" ]; then
             echo
             echo -e "${iWhite}Summary  \e[0m"
             summary
         else
-            # no colors
             echo
             echo "Summary  "
             summaryBW
         fi
     fi
-    # IZPIS Summary devices ------------------------------------------------------------------------------
     if [ "$print_devices" > "0" ]; then
         if [ "$set_colors" = "1" ]; then
             echo
@@ -264,15 +251,12 @@ while true; do
             sorted_devices
             print_sorted_devices
         else
-            # no colors
             echo
             echo "Sorted devices  "
             sorted_devices
             print_sorted_devices
         fi
     fi
-    #------------------------------------------------------------------------------------------------------
-    # končne
     echo
     unset pool_names
     unset all_pools
