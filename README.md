@@ -1,6 +1,7 @@
 # api-ccminer
 ## API monitoring on a freely accessible WEBSITE
 The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation. Colors different mining pools for easier identification. Highlights hashrates below 1 MH/s or above specific thresholds (e.g., >2, >3 ... >9 MH/s)
+The web page adapts to the width of the screen, so on mobile devices there is only one column, while on desktop the number of columns adjusts according to the current zoom of the page. The colors are fixed (current version) and are visible in the table under the devices.
 
 ## Oink's Android Mining Monitoring Tool
 
