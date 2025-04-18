@@ -47,9 +47,13 @@ set your rsa_id for github
 "web_dir": "~/api-ccweb/", change here if you choose different site
 
 "device_list": "dev.list", change here if you choose different file name
+
 "port": 4068, use same port as is in config.json
+
 "refreshing_min": 15, change according to need
+
 "webjson": 1, 1=will send data to web site, 0=will not
+
 "not_on_list": 0, 1=also displays devices marked with ### in "device_list":
 "columns": 0, 1,2,3,..=fixed number of columns (in print_apis) 0=auto fit display size
 "dev_in_line": 0, 1,2,3,..=fixed number of devices (in print_devices) 0=auto
