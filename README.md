@@ -1,11 +1,47 @@
 # api-ccminer
 ## API monitoring on the WEB page
+The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation. Colors different mining pools for easier identification. Highlights hashrates below 1 MH/s or above specific thresholds (e.g., >2, >3 ... >9 MH/s)
 
-The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation.
+## Oink's Android Mining Monitoring Tool
 
+https://github.com/Oink70/Android-Mining/tree/main/monitoring
+
+Read Oink's README.md first!
+Thanks, Oink! 😄
+
+This tool is tailored to my needs, with each miner's performance displayed in MH/s (mega hashes per second).
+Customization requires some prior programming knowledge.
+
+## Disclaimer
+These programs are provided "AS IS," without any warranties, express or implied. The author does not take responsibility for any direct or indirect damage caused by their use. Use them at your own risk. 
+By using the program with a public Github page, your data (miner names, partial or full IP, pool, hash of each miner, total hash, estimated profit in VRSC and USDT) will be publicly available to anyone who accesses your page. By installing and using the program, you assume all responsibility. The author of the program is not responsible for the disclosure of this or any other data on your page.
+If you want to use the program only internally without a public Github page, set the parameter "webjson" to 0 in 'mydata.json' file.
+If you are unsure about their functionality or potential impact, do not proceed.
+
+No support provided. Report bug on Discord.
+
+## Donation
+If you find this program useful and appreciate my effort, you can support me by donating for a coffee or, even better, for a beer. 🍺 Cheers!
+Your generosity is greatly appreciated.
+
+VRSC
+```
+zs1u32sumn5pfn9va68wk6cmw60jmlsl5elt2vdrrxa0qvcgeatvvq5zp96ewyrczwg2q3e78ycctp
+```
+
+## Requirements
 A Github account on `https://github.com/` is required for the output on the website to work (accessible from anywhere). The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. There will still be new data every 15 minutes.
 
-### Cloning and defining programs
+Update and install
+```
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt install nano screen bc jq perl -y
+sudo apt install python3 python3-pip -y
+pip3 install requests
+```
+
+## Installation
 Clone the main program
 ```
 cd
@@ -53,7 +89,7 @@ alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
 ```
 Update `source ~/.bashrc`
 
-### Setting parameters
+## Setting parameters
 Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 "SSH_rsa": enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required
@@ -83,3 +119,18 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 "print_summary": 1, 1=print summary data 0=will not
 
 "print_devices": 1, 1=list sorted devices by pool 0=will not
+
+"pool_1": "verus", and "pcolor_1": "iBlue", It takes the poll names as you have them set in your config.json under "name" and not under "url". Only the part of the name that matches will be colored. For example, for "vipor_DE" and "2nd_vipor_US" only the part "vipor" will be colored. Adjust the output and colors to your liking, and correct the config.json accordingly. I recommend choosing shorter tags due to the length of the output.
+
+"color_brackets": "iGray", This is the color of the brackets in the device table
+
+"color_name": "Yellow", This is the color of the device names as defined in your config.json
+
+"color_ip": "Blue", This is the color of the IP in the device table
+
+## 
+
+## Start
+`~/api-ccminer/webwatch.sh` or `sw`
+
+
