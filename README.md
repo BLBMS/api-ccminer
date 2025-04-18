@@ -69,31 +69,28 @@ git clone https://github.com/XXXXXX/api-ccweb.git
 cd api-ccweb
 ```
 
-
 Set up git
 `git remote -v`
-If it prints  ... https://github.com/...
-change with
-`git remote set-url origin git@github.com/XXXXX/api-ccweb.git`
-replace XXXXX with your github name and check again
+If it prints  `... https://github.com/...` change with `git remote set-url origin git@github.com/XXXXX/api-ccweb.git` replace XXXXX with your github name and check again `git remote -v`, must be `... origin  git@github.com/...`
+Test with `git status` and `ssh -T git@github.com`, answer is like `Hi XXXXXX! You've successfully authenticated,...`
+
+Make pull and push
 ```
-git remote -v
-```
-Must be ... origin  git@github.com/...
-```
-git status
+git pull --rebase origin main
 git pull
 git push
 ```
 
-
-Test with `git status`
-
-If all OK then
+If all OK then move files and push to github
 ```
 mv ~/api-ccminer/index.html .
 mv ~/api-ccminer/favicon.ico .
+git add index.html
+git add favicon.ico
+git commit -m "first time"
+git push origin main
 ```
+Check if you have this two fules in your github/api-ccweb!
 
 Add aliases in `nano ~/.bashrc`, add at end of file
 ```
