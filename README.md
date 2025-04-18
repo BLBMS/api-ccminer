@@ -176,3 +176,4 @@ Example:
 ## Printout example
 ### Desktop - screen
 
+![1](/pic/esktop_screen.jpg)
