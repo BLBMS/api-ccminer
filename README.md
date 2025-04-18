@@ -59,7 +59,7 @@ On Github add new public repo named 'api-ccweb'. Do not add README, .gitignore o
 Go to `https://github.com/settings/keys` and use your or add new SSH RSA Key. Copy both keys in '~/.ssh/'.
 ```cd ~/.ssh/```
 Assign the correct permissions (replace xxx with the correct names of your files)
-``` bash
+```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_xxx
 chmod 644 ~/.ssh/id_xxx.pub
@@ -78,14 +78,14 @@ If it prints  `... https://github.com/...` change with `git remote set-url origi
 Test with `git status` and `ssh -T git@github.com`, answer is like `Hi XXXXXX! You've successfully authenticated,...`
 
 Make pull and push
-```
+```bash
 git pull --rebase origin main
 git pull
 git push
 ```
 
 If all OK then move files and push to github
-```
+```bash
 mv ~/api-ccminer/index.html .
 mv ~/api-ccminer/favicon.ico .
 git add index.html
@@ -96,7 +96,7 @@ git push origin main
 Check if you have this two files in your github/api-ccweb!
 
 Add aliases in `nano ~/.bashrc`, add at end of file
-```
+```bash
 alias sw='~/api-ccminer/webwatch.sh'
 alias rw='screen -d -r WebWatch'
 alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
@@ -162,7 +162,7 @@ Edit the dev.list file to include the IPs and names of miners. Each line should 
 Lines starting with ### are comment/ignored. Lines starting with # are marked as NOT_ON_LIST. This temporarily removes the device from processing without permanently erasing it.
 
 Example:
-```shell
+```bash
 ###   ### - comment/line ignored
 ###   #   - set to NOT_ON_LIST
 ### worker_IP   worker_name   custom_text
