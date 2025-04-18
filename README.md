@@ -1,5 +1,5 @@
 # api-ccminer
-## API monitoring on the WEB page
+## API monitoring on a freely accessible WEBSITE
 The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation. Colors different mining pools for easier identification. Highlights hashrates below 1 MH/s or above specific thresholds (e.g., >2, >3 ... >9 MH/s)
 
 ## Oink's Android Mining Monitoring Tool
@@ -30,7 +30,7 @@ zs1u32sumn5pfn9va68wk6cmw60jmlsl5elt2vdrrxa0qvcgeatvvq5zp96ewyrczwg2q3e78ycctp
 ```
 
 ## Requirements
-A Github account on `https://github.com/` is required for the output on the website to work (accessible from anywhere). The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. There will still be new data every 15 minutes.
+A Github account on https://github.com/ is required for the output on the website to work (accessible from anywhere). The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. There will still be new data every 15 minutes.
 
 Update and install
 ```
