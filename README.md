@@ -104,7 +104,7 @@ Update `source ~/.bashrc`
 
 ## Setting parameters
 Go to `cd ~/api-ccminer` and edit `nano mydata.json`
-
+```text
 "SSH_rsa": "~/.ssh/id_xxx", | Enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required.
 
 "web_dir": "~/api-ccweb/", | Change here if you choose different site, starting with `~/` is required.
@@ -140,7 +140,7 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 "color_name": "Yellow", | This is the color of the device names as defined in your config.json. I recommend choosing shorter names due to the width of the output in tables.
 
 "color_ip": "Blue", | This is the color of the IP in the device table.
-
+```
 Important: Changing colors and displaying tables is only possible in the screen version. The web version cannot be customized (yet).
 
 ## Add devices to list
