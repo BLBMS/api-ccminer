@@ -33,7 +33,7 @@ zs1u32sumn5pfn9va68wk6cmw60jmlsl5elt2vdrrxa0qvcgeatvvq5zp96ewyrczwg2q3e78ycctp
 ```
 
 ## Requirements
-A Github account on https://github.com/ is required for the output on the website to work (accessible from anywhere).
+A Github account on https://github.com/ is required for the output on the website to work (accessible from anywhere). The program also works without the WEB option, the tables are displayed locally on the screen.
 
 Update and install
 ```bash
