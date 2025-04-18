@@ -183,6 +183,7 @@ Example:
 ## Printout example
 ### Desktop - screen
 ![1](/pic/desktop_screen.jpg)
+Live display of API retrieval. Limited output.
 ```json
   "print_apis": 0,
   "print_summary": 1,
