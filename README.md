@@ -133,14 +133,20 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 "print_devices": 1, | 1=list all sorted devices by pool 2,3...=list only from the 2nd, 3rd ... most numerous onwards 0=no list
 
-"pool_1": "verus", and "pcolor_1": "iBlue", | It takes the poll names as you have them set in your config.json under "name" and not under "url". Only the part of the name that matches will be colored. For example, for "vipor_DE" and "2nd_vipor_US" only the part "vipor" will be colored. Adjust the output and colors to your liking, and correct the config.json accordingly. I recommend choosing shorter tags due to the width of the output in tables.
+"pool_1": "verus", and
+"pcolor_1": "iBlue", | It takes the poll names as you have them set in your config.json under "name" and not under "url". 1*
 
 "color_brackets": "iGray", | This is the color of the brackets in the device table.
 
-"color_name": "Yellow", | This is the color of the device names as defined in your config.json. I recommend choosing shorter names due to the width of the output in tables.
+"color_name": "Yellow", | This is the color of the device names as defined in your config.json. 2*
 
 "color_ip": "Blue", | This is the color of the IP in the device table.
 ```
+
+1* Only the part of the name that matches will be colored. For example, for "vipor_DE" and "2nd_vipor_US" only the part "vipor" will be colored. Adjust the output and colors to your liking, and correct the config.json accordingly. I recommend choosing shorter tags due to the width of the output in tables.
+
+2* I recommend choosing shorter names due to the width of the output in tables.
+
 Important: Changing colors and displaying tables is only possible in the screen version. The web version cannot be customized (yet).
 
 ## Add devices to list
