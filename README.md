@@ -33,7 +33,7 @@ zs1u32sumn5pfn9va68wk6cmw60jmlsl5elt2vdrrxa0qvcgeatvvq5zp96ewyrczwg2q3e78ycctp
 ```
 
 ## Requirements
-A Github account on https://github.com/ is required for the output on the website to work (accessible from anywhere). The program also works without the WEB option, the tables are displayed locally on the screen.
+A Github account on https://github.com/ is required for the output on the website to work (accessible from anywhere). The program also works without the WEB option, the tables are displayed locally on the screen and .
 
 Update and install
 ```bash
@@ -102,6 +102,9 @@ alias rw='screen -d -r WebWatch'
 alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
 ```
 Update `source ~/.bashrc`
+
+## Monitoring the web version localy in a browser.
+On the same mchine, you can also monitor the WEB version of the display in your browser. There are no delays via the Github page. Inside the `~/api-ccweb/` folder, run `python3 -m http.server 8000` and in the browser `http://localhost:8000/`.
 
 ## Configure your config.json
 Add at the end in your config.json. Allows access for this IP range. Adjust according to your network setup. Enables the API, binding it to the specified IP address and port. 0.0.0.0 indicates all adapters and IPs. Change to your port.
