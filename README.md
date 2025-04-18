@@ -46,7 +46,7 @@ pip3 install requests
 
 ## Installation
 Clone the main program
-```
+```bash
 cd
 git clone https://github.com/BLBMS/api-ccminer.git
 cd api-ccminer
@@ -59,14 +59,14 @@ On Github add new public repo named 'api-ccweb'. Do not add README, .gitignore o
 Go to `https://github.com/settings/keys` and use your or add new SSH RSA Key. Copy both keys in '~/.ssh/'.
 ```cd ~/.ssh/```
 Assign the correct permissions (replace xxx with the correct names of your files)
-```
+``` bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_xxx
 chmod 644 ~/.ssh/id_xxx.pub
 ```
 
 Clone repository (replace XXXXXX with the correct name of your repo)
-```
+```bash
 cd
 git clone https://github.com/XXXXXX/api-ccweb.git
 cd api-ccweb
