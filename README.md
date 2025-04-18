@@ -92,41 +92,41 @@ Update `source ~/.bashrc`
 ## Setting parameters
 Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
-"SSH_rsa": enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required
+"SSH_rsa": "~/.ssh/id_xxx", | Enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required.
 
-"web_dir": "~/api-ccweb/", change here if you choose different site, starting with `~/` is required
+"web_dir": "~/api-ccweb/", | Change here if you choose different site, starting with `~/` is required.
 
-"device_list": "dev.list", change here if you choose different file name
+"device_list": "dev.list", | Change here if you choose different file name.
 
-"port": 4068, use same port as is in config.json
+"port": 4068, | Use same port as is in config.json.
 
-"refreshing_min": 15, change according to need
+"refreshing_min": 15, | Change according to need. I don't recommend too often because of the impact on hash.
 
-"webjson": 1, 1=will send data to web site, 0=will not
+"webjson": 1, | 1=will send data to web site, 0=will not
 
-"not_on_list": 0, 1=also displays devices marked with ### in "device_list":
+"not_on_list": 0, | 1=also displays devices marked with ### in "device_list":
 
-"columns": 0, 1,2,3,..=fixed number of columns (in print_apis) 0=auto fit display size
+"columns": 0, | 1,2,3,..=fixed number of columns (in print_apis) 0=auto fit display size
 
-"dev_in_line": 0, 1,2,3,..=fixed number of devices (in print_devices) 0=auto
+"dev_in_line": 0, | 1,2,3,..=fixed number of devices (in print_devices) 0=auto
 
-"colors": 1, 1=output in WebWatch screen in colors 0=mono
+"colors": 1, | 1=output in WebWatch screen in colors 0=mono
 
-"ip_prefix": "192.168.", to shorten the length or cover up part of the IP, remove the specified part
+"ip_prefix": "192.168.", | To shorten the length or cover up part of the IP, remove the specified part.
 
-"print_apis": 1, 1=print a table of devices with API data 0=will not
+"print_apis": 1, | 1=print a table of devices with API data 0=will not
 
-"print_summary": 1, 1=print summary data 0=will not
+"print_summary": 1, | 1=print summary data 0=will not
 
-"print_devices": 1, 1=list sorted devices by pool 0=will not
+"print_devices": 1, | 1=list sorted devices by pool 0=will not
 
-"pool_1": "verus", and "pcolor_1": "iBlue", It takes the poll names as you have them set in your config.json under "name" and not under "url". Only the part of the name that matches will be colored. For example, for "vipor_DE" and "2nd_vipor_US" only the part "vipor" will be colored. Adjust the output and colors to your liking, and correct the config.json accordingly. I recommend choosing shorter tags due to the length of the output.
+"pool_1": "verus", and "pcolor_1": "iBlue", | It takes the poll names as you have them set in your config.json under "name" and not under "url". Only the part of the name that matches will be colored. For example, for "vipor_DE" and "2nd_vipor_US" only the part "vipor" will be colored. Adjust the output and colors to your liking, and correct the config.json accordingly. I recommend choosing shorter tags due to the width of the output in tables.
 
-"color_brackets": "iGray", This is the color of the brackets in the device table
+"color_brackets": "iGray", | This is the color of the brackets in the device table.
 
-"color_name": "Yellow", This is the color of the device names as defined in your config.json
+"color_name": "Yellow", | This is the color of the device names as defined in your config.json. I recommend choosing shorter names due to the width of the output in tables.
 
-"color_ip": "Blue", This is the color of the IP in the device table
+"color_ip": "Blue", | This is the color of the IP in the device table.
 
 ## Add devices to list
 Edit the dev.list file to include the IPs and names of miners. Each line should include the miner's IP address and name, separated by a tab or space. You can optionally add a description. End the file with a blank line.
@@ -151,5 +151,3 @@ Example:
 
 ## Start
 `~/api-ccminer/webwatch.sh` or `sw`
-
-
