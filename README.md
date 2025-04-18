@@ -15,16 +15,16 @@ chmod +x *.sh
 
 On Github add new public repo named 'api-ccweb'. Do not add README, .gitignore or license. Go to repo and 'Add file' named 'data.json'. The content is anything and it doesn't matter. Go to 'Settings/Pages', in 'Source' set 'Deploy from a branch' in 'Branch' set 'main' and in 'Folder' set '/ (root)'.
 
-Go to `https://github.com/settings/keys` and use your os add new SSH RSA Key. Copy both keys in '~/.ssh/'.
+Go to `https://github.com/settings/keys` and use your or add new SSH RSA Key. Copy both keys in '~/.ssh/'.
 ```cd ~/.ssh/```
-Assign the correct permissions (fix xxx in the correct names of your files)
+Assign the correct permissions (replace xxx with the correct names of your files)
 ```
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_xxx
 chmod 644 ~/.ssh/id_xxx.pub
 ```
 
-Clone repository (fix XXXXXX in the correct name of your repo)
+Clone repository (replace XXXXXX with the correct name of your repo)
 ```
 cd
 git clone https://github.com/XXXXXX/api-ccweb.git
