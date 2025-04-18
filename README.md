@@ -1,10 +1,11 @@
 # api-ccminer
-API monitoring on the WEB page
+## API monitoring on the WEB page
 
 The program lists all devices reachable via API in the WebWatch screen. It calculates a summary for all devices, including "Daily estimate coins" and "Daily estimate earnings". It sorts devices by pool and by (non)operation.
 
 A Github account on `https://github.com/` is required for the output on the website to work (accessible from anywhere). The page is updated every minute. So, if the API scanning program updates every 15 minutes, the website will be updated approximately in the next minute. There will still be new data every 15 minutes.
 
+### Cloning and defining programs
 Clone the main program
 ```
 cd
@@ -42,23 +43,18 @@ replace XXXXX with your github name and check again
 `git remote -v`
 Must be ... origin  git@github.com/...
 
-test
-`git status`
+Test with `git status`
 
-Add aliases
-`nano ~/.bashrc`
-add at end of file
+Add aliases in `nano ~/.bashrc`, add at end of file
 ```
 alias sw='~/api-ccminer/webwatch.sh'
 alias rw='screen -d -r WebWatch'
 alias xw='screen -S WebWatch -X quit 1>/dev/null 2>&1'
 ```
-`source ~/.bashrc`
+Update `source ~/.bashrc`
 
-Set program settings
-`cd ~/api-ccminer`
-edit
-`nano mydata.json`
+### Setting parameters
+Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 "SSH_rsa": enter the private key file set above e.g. '~/.ssh/id_xxx', starting with `~/` is required
 
