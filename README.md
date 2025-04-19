@@ -54,7 +54,7 @@ chmod +x *.sh
 rm -rf pic/
 ```
 
-On Github add new public repo named 'api-ccweb'. Do not add README, .gitignore or license. Go to repo and 'Add file' named 'data.json'. The content is anything and it doesn't matter. Go to 'Settings/Pages', in 'Source' set 'Deploy from a branch' in 'Branch' set 'main' and in 'Folder' set '/ (root)'.
+On Github add new public repo named **`api-ccweb`**. Do not add README, .gitignore or license. Go to repo and 'Add file' named 'data.json'. The content is anything and it doesn't matter. Go to 'Settings/Pages', in 'Source' set 'Deploy from a branch' in 'Branch' set 'main' and in 'Folder' set '/ (root)'.
 
 Go to `https://github.com/settings/keys` and use your or add new SSH RSA Key. Copy both keys in '~/.ssh/'.
 ```cd ~/.ssh/```
