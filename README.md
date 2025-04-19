@@ -186,6 +186,15 @@ Example:
 ## Start
 `~/api-ccminer/webwatch.sh` or `sw`
 
+## Website
+Your website is now visible from anywhere (replace XXXXXX with your github name).
+```
+https://XXXXXX.github.io/api-ccweb/
+```
+
+## Monitoring the web version localy in a browser
+On the same machine, you can also monitor the WEB version of the display in your browser. There are no delays as via the Github page. Inside the `~/api-ccweb/` folder, run `python3 -m http.server 8000` and in the browser `http://localhost:8000/`.
+
 ## Printout example
 ### Desktop - screen
 ![1](/pic/desktop_screen.jpg)
