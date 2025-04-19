@@ -72,10 +72,10 @@ git clone https://github.com/XXXXXX/api-ccweb.git
 cd api-ccweb
 ```
 
-Set up git
-```git remote -v```
-If it prints  `... https://github.com/...`change with
-```git remote set-url origin git@github.com/XXXXX/api-ccweb.git```
+Set up git `git remote -v` If it prints `... https://github.com/...` change with
+```
+git remote set-url origin git@github.com/XXXXX/api-ccweb.git
+```
 replace XXXXX with your github name and check again `git remote -v`, must be `... origin  git@github.com/...`
 
 Test with `git status` and `ssh -T git@github.com`, answer is like `Hi XXXXXX! You've successfully authenticated,...`
