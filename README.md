@@ -68,7 +68,7 @@ chmod 644 ~/.ssh/id_xxx.pub
 Clone repository (replace XXXXXX with the correct name of your repo)
 ```bash
 cd
-git clone https://github.com/XXXXXX/api-ccweb.git
+git clone git@github.com:XXXXXX/api-ccweb.git
 cd api-ccweb
 ```
 
