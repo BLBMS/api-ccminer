@@ -87,7 +87,7 @@ git pull
 git push
 ```
 
-If all OK then move files and push to github
+If all OK (.. up to date) then move files and push to github
 ```bash
 mv ~/api-ccminer/index.html .
 mv ~/api-ccminer/favicon.ico .
