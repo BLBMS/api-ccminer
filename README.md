@@ -151,7 +151,7 @@ Go to `cd ~/api-ccminer` and edit `nano mydata.json`
 
 "color_brackets": "iGray", | This is the color of the brackets in the device table.
 
-"color_name": "Yellow", | This is the color of the device names as defined in your config.json. 2*
+"color_name": "Yellow", | This is the color of the device names (in dev.list). 2*
 
 "color_ip": "Blue", | This is the color of the IP in the device table.
 ```
